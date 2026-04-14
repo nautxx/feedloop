@@ -10,6 +10,18 @@
     --swatch-bg: rgba(0, 0, 0, 0.08);
 }
 
+body.theme-lavender {
+    --bg-start: #1a0f2b;
+    --bg-end: #12081f;
+    --text: #e9e4f5;
+    --muted: #9b8fb3;
+
+    --panel-bg: rgba(28, 18, 45, 0.78);
+    --panel-hover: rgba(255, 255, 255, 0.06);
+    --panel-active: rgba(255, 255, 255, 0.08);
+    --swatch-bg: rgba(255, 255, 255, 0.08);
+}
+
 body.theme-warm {
     --bg-start: #f8f4ef;
     --bg-end: #f1ebe3;
@@ -198,6 +210,12 @@ h1 {
     opacity: 0;
     transition: opacity 0.15s ease, transform 0.15s ease;
     pointer-events: auto;
+}
+
+.theme-option[data-theme="lavender"] {
+    --swatch-1: #cbb6ff;
+    --swatch-2: #6d5ca8;
+    --swatch-3: #12081f;
 }
 
 .theme-option[data-theme="warm"] {
