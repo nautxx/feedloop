@@ -200,6 +200,24 @@ h1 {
     pointer-events: auto;
 }
 
+.theme-option[data-theme="warm"] {
+    --swatch-1: #2f241c;
+    --swatch-2: #c8a97e;
+    --swatch-3: #f1ebe3;
+}
+
+.theme-option[data-theme="night"] {
+    --swatch-1: #f3ede6;
+    --swatch-2: #3a342f;
+    --swatch-3: #141210;
+}
+
+.theme-option[data-theme="sage"] {
+    --swatch-1: #2d332b;
+    --swatch-2: #a7b5a0;
+    --swatch-3: #e8ece3;
+}
+
 .theme-option {
     appearance: none;
     background: transparent;
@@ -237,24 +255,6 @@ h1 {
     background: var(--panel-active);
     color: var(--text);
     opacity: 1;
-}
-
-.theme-option.theme-warm {
-    --swatch-1: #7a5a3c;
-    --swatch-2: #c8a97e;
-    --swatch-3: #f1ebe3;
-}
-
-.theme-option.theme-night {
-    --swatch-1: #f3ede6;
-    --swatch-2: #3a342f;
-    --swatch-3: #141210;
-}
-
-.theme-option.theme-sage {
-    --swatch-1: #5f7d6b;
-    --swatch-2: #a7b5a0;
-    --swatch-3: #e8ece3;
 }
 
 .swatch {
