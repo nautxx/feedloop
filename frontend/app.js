@@ -185,6 +185,13 @@ const DYK = {
     document.querySelectorAll("[data-theme]").forEach((button) => {
       button.classList.toggle("is-active", button.dataset.theme === themeName);
     });
+
+    if (this.elements.themeToggle) {
+      const label = this.elements.themeToggle.querySelector(".theme-label");
+      if (label) {
+        label.textContent = themeName;
+      }
+    }
   },
 
   // Pick one fact using weighted random selection
