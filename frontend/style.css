@@ -29,9 +29,46 @@ body.theme-lavender {
     --text-color: #2F2A41;
     --sub-color: #E4E3E8;
 
-    --surface-color: rgba(71, 46, 116, 0.78);
-    --surface-hover-color: rgba(255, 255, 255, 0.06);
-    --surface-active-color: rgba(255, 255, 255, 0.08);
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
+}
+
+body.theme-muted {
+    --bg-color: #8FAFB0;
+    --bg-alt-color: #7f9ea0;
+    --text-color: #2f3a3a;
+    --sub-color: #5f6f6f;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
+}
+
+body.theme-paper {
+    --bg-color: #d9d9d9;
+    --bg-alt-color: #cfcfcf;
+    --text-color: #3a3a3a;
+    --sub-color: #7a7a7a;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
+}
+
+body.theme-pastel {
+    --bg-color: #c7a8b3;
+    --bg-alt-color: #b896a3;
+    --text-color: #3f3440;
+    --sub-color: #f2d6de;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
 }
 
 body.theme-quiet {
@@ -40,9 +77,10 @@ body.theme-quiet {
     --text-color: #f3ede6;
     --sub-color: #b8aea4;
 
-    --surface-color: rgba(24, 22, 20, 0.78);
-    --surface-hover-color: rgba(255, 255, 255, 0.06);
-    --surface-active-color: rgba(255, 255, 255, 0.08);
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
 }
 
 body.theme-sage {
@@ -51,9 +89,10 @@ body.theme-sage {
     --text-color: #2d332b;
     --sub-color: #667061;
 
-    --surface-color: rgba(255, 255, 255, 0.65);
-    --surface-hover-color: rgba(0, 0, 0, 0.04);
-    --surface-active-color: rgba(0, 0, 0, 0.06);
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--text-color);
+    --surface-active-color: var(--text-color);
+    --surface-text-color: var(--bg-color);
 }
 
 body {
@@ -225,6 +264,27 @@ h1 {
     --swatch-sub: #E4E3E8;
     --swatch-sub-alt: #12081f;
     --swatch-bg: #ADA6C2;
+}
+
+.theme-option[data-theme="muted"] {
+    --swatch-text: #b9addc;
+    --swatch-sub: #9aa3b2;
+    --swatch-sub-alt: #a8d0d0;
+    --swatch-bg: #2f3a3a;
+}
+
+.theme-option[data-theme="paper"] {
+    --swatch-text: #3a3a3a;
+    --swatch-sub: #9a9a9a;
+    --swatch-sub-alt: #d9d9d9;
+    --swatch-bg: #3a3a3a;
+}
+
+.theme-option[data-theme="pastel"] {
+    --swatch-text: #f5e6a8;
+    --swatch-sub: #a8d8e8;
+    --swatch-sub-alt: #4a3f4a;
+    --swatch-bg: #3f3440;
 }
 
 .theme-option[data-theme="quiet"] {
