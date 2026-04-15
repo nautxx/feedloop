@@ -66,7 +66,7 @@
     },
     {
       "id": 9,
-      "text": "From 12 children came 47 grandchildren and great-grandchildren - a legacy still growing.",
+      "text": "From 12 children came 47 grandchildren and great-grandchildren — a legacy still growing.",
       "type": "family",
       "tags": ["generation", "growth"],
       "active": true,
@@ -74,7 +74,7 @@
     },
     {
       "id": 10,
-      "text": "At 16.85824° N, 120.38213° E lies the family’s provincial home.",
+      "text": "At 16.85824° N, 120.38213° E lies the family’s provincial home in the northern part of La Union.",
       "type": "location",
       "tags": ["coordinates", "home"],
       "active": true,
@@ -130,7 +130,7 @@
     },
     {
       "id": 104,
-      "text": "Four generations of the family have lived at the same time.",
+      "text": "Four generations of the family have lived concurrently.",
       "type": "generation",
       "tags": ["multi-generation"],
       "active": true,
@@ -362,7 +362,7 @@
     },
     {
       "id": 208,
-      "text": "Krystle’s household includes one of the largest groups of children within a single family branch.",
+      "text": "Krystle’s household includes one of the largest groups of children within a single family branch weighing in at 6 members and 1 dog.",
       "type": "branch",
       "tags": ["krystle"],
       "active": true,
@@ -505,6 +505,22 @@
       "priority": 2
     },
     {
+      "id": 300,
+      "text": "Victoria once downed a glass of 14-year-old Oban Scotch like a complete barbarian.",
+      "type": "memory",
+      "tags": ["story", "anecdote"],
+      "active": true,
+      "priority": 3
+    },
+    {
+      "id": 301,
+      "text": "While visiting Victoria in college, Jason once spent over two hours drunk and lost in her apartment garage searching for Jon’s car — only to realize it had been parked outside the entire time.",
+      "type": "memory",
+      "tags": ["story", "anecdote"],
+      "active": true,
+      "priority": 3
+    },
+    {
       "id": 500,
       "template": "It has been {years} since Kara and Tim got married.",
       "type": "timeline",
@@ -543,6 +559,14 @@
       "text": "Krystle’s favorite Filipino dish is ampalaya, the bitter the better.",
       "type": "favorite",
       "tags": ["food", "favorite"],
+      "active": true,
+      "priority": 3
+    },
+    {
+      "id": 1000,
+      "text": "Oliver and his uncle Michael are currently in a height battle — it’s a close one.",
+      "type": "memory",
+      "tags": ["family", "fun"],
       "active": true,
       "priority": 3
     }
