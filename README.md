@@ -1,17 +1,31 @@
-# Did You Know? - Barnachea Edition
+# About
 
-A clean, minimal display of Barnachea family facts and trivia.
+Famifaqs is a minimalistic, customizable fact carousel designed to surface meaningful, memorable, and dynamic facts over time. 
 
-## Overview
+Built with simplicity and flexibility in mind, it allows you to curate structured datasets—ranging from family history and personal anecdotes to timelines and milestones—and present them in a clean, distraction-free interface.
 
-This project serves a rotating set of curated family facts from a simple JSON file.  
-Facts are displayed one at a time with smooth transitions and no repetition until all have been shown.
+With support for theming, weighted randomness, and dynamic fact generation (such as time-based updates), Famifaqs transforms static information into a living, evolving experience.
+
+## Features
+
+- Dynamic fact carousel with smooth fade and blur transitions
+- Weighted randomness to prioritize more important facts
+- Smart rotation logic that avoids recently shown facts
+- Type balancing to prevent repetitive categories
+- Time-aware display duration based on reading speed and punctuation
+- Dynamic fact generation using templates (e.g. years since an event)
+- Customizable theming system with multiple visual styles
+- Persistent theme selection using local storage
+- Interactive theme selector modal with live preview swatches
+- Responsive layout with orientation-aware spacing
+- Fixed fact container to prevent layout shifting
+- Clean, minimal UI focused on readability and storytelling
+- Structured JSON dataset with support for types, tags, and priorities
 
 ## Tech Stack
 
 - nginx (alpine) via Docker
 - Static HTML, CSS, and JavaScript
-- Caddy (reverse proxy + HTTPS)
 
 ## Running Locally
 
@@ -51,7 +65,6 @@ This project is served behind Caddy with automatic HTTPS.
 
 Example domains:
 - https://barnachea.fyi
-- https://dyk.nautsfw.com
 
 ## Notes
 
