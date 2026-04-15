@@ -1,3 +1,41 @@
+/**
+ * A single fact item
+ * @typedef {Object} Fact
+ * @property {string} id
+ * @property {string} text
+ * @property {string} [type]
+ * @property {number} [priority]
+ * @property {boolean} [active]
+ */
+
+/**
+ * App configuration
+ * @typedef {Object} Config
+ * @property {string} factsUrl
+ * @property {number} fadeDurationMs
+ * @property {number} basePauseMs
+ * @property {number} recentFactsLimit
+ * @property {number} maxSameTypeInRow
+ * @property {{ cache: string }} fetchOptions
+ * @property {{ empty: string, error: string }} messages
+ */
+
+/**
+ * Runtime state
+ * @typedef {Object} State
+ * @property {Fact[]} facts
+ * @property {string[]} recentFactIds
+ * @property {string[]} recentTypes
+ * @property {string|null} lastFactId
+ * @property {number|null} rotationTimer
+ */
+
+/**
+ * Available theme names
+ * @typedef {"calm" | "lavender" | "quiet" | "sage" | "ocean" | "sunset" | "ink"} Theme
+ */
+
+/** @type {{ config: Config, state: State }} */
 const Carousel = {
   // Core configuration for timing, data source, and messages
   config: {
