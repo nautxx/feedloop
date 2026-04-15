@@ -65,6 +65,13 @@ h1 {
     }
 }
 
+/* Landscape (phone held horizontally) */
+@media (max-height: 500px) {
+    .fact-wrap {
+        min-height: 120px;
+    }
+}
+
 .bottom-bar {
     position: fixed;
     left: 50%;
