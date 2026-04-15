@@ -41,7 +41,7 @@ const Carousel = {
   // Core configuration for timing, data source, and messages
   config: {
     factsUrl: "/facts.json",
-    fadeDurationMs: 1400,
+    fadeDurationMs: 2000,
     basePauseMs: 600,
     recentFactsLimit: 5,
     maxSameTypeInRow: 2,
@@ -409,21 +409,37 @@ const Carousel = {
     this.elements.fact.style.opacity = "1";
   },
 
-  // Transition to next fact with fade effect
+  // Transition with equal fade + blur
   showNextFact() {
     const fact = this.getNextFact();
-    if (!fact) return;
+    if (!fact || !this.elements.fact) return;
 
     const { fact: factEl } = this.elements;
+    const duration = this.config.fadeDurationMs;
+
+    // Fade out + blur (same speed)
+    factEl.style.transition = `
+    opacity ${duration}ms ease,
+    filter ${duration}ms ease
+  `;
     factEl.style.opacity = "0";
+    factEl.style.filter = "blur(2px)";
 
     window.setTimeout(() => {
-      factEl.textContent = fact.text;
+      factEl.textContent = fact.text || "";
+
+      // Fade in + unblur (same speed)
+      factEl.style.transition = `
+      opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1),
+      filter ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)
+    `;
       factEl.style.opacity = "1";
+      factEl.style.filter = "blur(0px)";
+
       this.state.lastFactId = fact.id;
       this.rememberFact(fact.id);
       this.rememberType(fact.type);
-    }, this.config.fadeDurationMs);
+    }, duration);
   },
 
   // Schedule next fact based on smart timing
