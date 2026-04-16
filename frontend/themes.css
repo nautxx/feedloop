@@ -31,6 +31,19 @@ body.theme-calm {
     --surface-text-color: var(--bg-color);
 }
 
+body.theme-cheesecake {
+    --bg-color: #FDF0D5;
+    --bg-alt-color: #faeccf;
+    --accent-color: #8E2949;
+    --text-color: #D91C81;
+    --sub-color: #3A3335;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
 body.theme-frozen-llama {
     --bg-color: #9BF2EA;
     --bg-alt-color: #97f1e8;
@@ -166,6 +179,13 @@ body.theme-ube {
     --swatch-accent-color: #B48126;
     --swatch-text-color: #382C21;
     --swatch-sub-color: #847E78;
+}
+
+.theme-option[data-theme="cheesecake"] {
+    --swatch-bg-color: #FDF0D5;
+    --swatch-accent-color: #8E2949;
+    --swatch-text-color: #D91C81;
+    --swatch-sub-color: #3A3335;
 }
 
 .theme-option[data-theme="frozen-llama"] {
