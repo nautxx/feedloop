@@ -13,11 +13,11 @@
 }
 
 body.theme-calm {
-    --bg-color: #F0E1C8;
-    --bg-alt-color: #e4d3b6;
-    --accent-color: #6b625a;
-    --text-color: #3C332A;
-    --sub-color: #6b625a;
+    --bg-color: #F1E1C7;
+    --bg-alt-color: #eddcc0;
+    --accent-color: #B48126;
+    --text-color: #382C21;
+    --sub-color: #847E78;
 
     --surface-color: var(--bg-color);
     --surface-hover-color: var(--sub-color);
@@ -104,10 +104,10 @@ body.theme-sage {
 }
 
 .theme-option[data-theme="calm"] {
-    --swatch-accent: #6b625a;
-    --swatch-text: #3C332A;
-    --swatch-sub: #6b625a;
-    --swatch-bg: #f1ebe3;
+    --swatch-accent: #B48126;
+    --swatch-text: #382C21;
+    --swatch-sub: #847E78;
+    --swatch-bg: #F1E1C7;
 }
 
 .theme-option[data-theme="lavender"] {
