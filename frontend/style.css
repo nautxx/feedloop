@@ -72,6 +72,16 @@ h1 {
     }
 }
 
+::selection {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+::-webkit-selection {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
 .top-nav {
     position: fixed;
     top: 1.25rem;
