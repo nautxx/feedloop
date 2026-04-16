@@ -501,7 +501,7 @@
       "text": "Some Barnachea households are centered around long-standing family homes that appear repeatedly in the archive.",
       "type": "household",
       "tags": ["homes"],
-      "active": true,
+      "active": false,
       "priority": 2
     },
     {
