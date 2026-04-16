@@ -129,6 +129,22 @@
       "priority": 2
     },
     {
+      "id": 17,
+      "text": "Among the great-grandchildren, females now lead 12 to 7.",
+      "type": "stat",
+      "tags": ["gender", "generation", "great-grandchildren"],
+      "active": true,
+      "priority": 2
+    },
+    {
+      "id": 18,
+      "text": "There are currently seven teenagers in the family. Stay strong everyone.",
+      "type": "stat",
+      "tags": ["age", "generation", "teens"],
+      "active": false,
+      "priority": 3
+    },
+    {
       "id": 101,
       "text": "Arthur, Bernardo Sr., and Leopoldo were all born within just a few years of each other in the late 1940s.",
       "type": "generation",
@@ -158,22 +174,6 @@
       "type": "generation",
       "tags": ["multi-generation"],
       "active": true,
-      "priority": 2
-    },
-    {
-      "id": 107,
-      "text": "June appears multiple times as a birthday month across different branches of the family.",
-      "type": "birthday",
-      "tags": ["june"],
-      "active": false,
-      "priority": 2
-    },
-    {
-      "id": 108,
-      "text": "Several Barnachea family members share birthdays in the same month but were born decades apart.",
-      "type": "birthday",
-      "tags": ["birthdays"],
-      "active": false,
       "priority": 2
     },
     {
