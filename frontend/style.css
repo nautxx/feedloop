@@ -6,7 +6,14 @@ body {
     align-items: center;
     background: radial-gradient(circle at top, var(--bg-color), var(--bg-alt-color));
     color: var(--text-color);
-    font-family: 'Inter', sans-serif;
+    font-family:
+        "Helvetica Neue",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
     text-align: center;
 }
 
@@ -17,7 +24,7 @@ body {
 
 h1 {
     margin: 0 0 8px;
-    font-family: serif;
+    font-family: Garamond, "EB Garamond", serif;
     font-size: 72px;
     font-weight: 600;
     letter-spacing: -0.03em;
