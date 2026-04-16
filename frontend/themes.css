@@ -51,6 +51,19 @@ body.theme-muted {
     --surface-text-color: var(--bg-color);
 }
 
+body.theme-olivia {
+    --bg-color: #1C1B1D;
+    --bg-alt-color: #1c1b1d;
+    --accent-color: #DEAF9D;
+    --text-color: #4D3E3E;
+    --sub-color: #F2EFED;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
 body.theme-paper {
     --bg-color: #EEEEEE;
     --bg-alt-color: #cfcfcf;
@@ -122,6 +135,13 @@ body.theme-ube {
     --swatch-accent-color: #C5B4E2;
     --swatch-text-color: #939EAD;
     --swatch-sub-color: #B1E3E3;
+}
+
+.theme-option[data-theme="olivia"] {
+    --swatch-bg-color: #1C1B1D;
+    --swatch-accent-color: #DEAF9D;
+    --swatch-text-color: #4D3E3E;
+    --swatch-sub-color: #F2EFED;
 }
 
 .theme-option[data-theme="paper"] {
