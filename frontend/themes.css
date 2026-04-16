@@ -109,6 +109,32 @@ body.theme-quiet {
     --surface-text-color: var(--bg-color);
 }
 
+body.theme-trackspec {
+    --bg-color: #FFFFFF;
+    --bg-alt-color: #FFFFFF;
+    --accent-color: #EB0028;
+    --text-color: #2E2925;
+    --sub-color: #A3A9AC;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
+body.theme-trackspec-dark {
+    --bg-color: #2E2925;
+    --bg-alt-color: #2E2925;
+    --accent-color: #EB0028;
+    --text-color: #FFFFFF;
+    --sub-color: #A3A9AC;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
 body.theme-ube {
     --bg-color: #B3BAFF;
     --bg-alt-color: #adb5fb;
@@ -171,11 +197,18 @@ body.theme-ube {
     --swatch-sub-color: #A7A7AF;
 }
 
-.theme-option[data-theme="sage"] {
-    --swatch-bg-color: #a7b5a0;
-    --swatch-accent-color: #F0E1C8;
-    --swatch-text-color: #2d332b;
-    --swatch-sub-color: #a7b5a0;
+.theme-option[data-theme="trackspec"] {
+    --swatch-bg-color: #FFFFFF;
+    --swatch-accent-color: #EB0028;
+    --swatch-text-color: #2E2925;
+    --swatch-sub-color: #A3A9AC;
+}
+
+.theme-option[data-theme="trackspec-dark"] {
+    --swatch-bg-color: #2E2925;
+    --swatch-accent-color: #EB0028;
+    --swatch-text-color: #FFFFFF;
+    --swatch-sub-color: #A3A9AC;
 }
 
 .theme-option[data-theme="ube"] {
