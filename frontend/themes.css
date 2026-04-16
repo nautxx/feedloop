@@ -52,11 +52,11 @@ body.theme-muted {
 }
 
 body.theme-paper {
-    --bg-color: #d9d9d9;
+    --bg-color: #EEEEEE;
     --bg-alt-color: #cfcfcf;
-    --accent-color: #C5B4E2;
-    --text-color: #3a3a3a;
-    --sub-color: #7a7a7a;
+    --accent-color: #444444;
+    --text-color: #B2B2B2;
+    --sub-color: #444444;
 
     --surface-color: var(--bg-color);
     --surface-hover-color: var(--sub-color);
@@ -125,10 +125,10 @@ body.theme-sage {
 }
 
 .theme-option[data-theme="paper"] {
-    --swatch-bg-color: #3a3a3a;
-    --swatch-accent-color: #d9d9d9;
-    --swatch-text-color: #3a3a3a;
-    --swatch-sub-color: #9a9a9a;
+    --swatch-bg-color: #EEEEEE;
+    --swatch-accent-color: #444444;
+    --swatch-text-color: #B2B2B2;
+    --swatch-sub-color: #444444;
 }
 
 .theme-option[data-theme="pastel"] {
