@@ -105,6 +105,14 @@
       "priority": 3
     },
     {
+      "id": 1001,
+      "text": "Mady is the newest driver in the family. Ask her anytime for rides.",
+      "type": "milestone",
+      "tags": ["driving", "coming-of-age"],
+      "active": true,
+      "priority": 3
+    },
+    {
       "id": 101,
       "text": "Arthur, Bernardo Sr., and Leopoldo were all born within just a few years of each other in the late 1940s.",
       "type": "generation",
@@ -157,7 +165,7 @@
       "text": "June appears multiple times as a birthday month across different branches of the family.",
       "type": "birthday",
       "tags": ["june"],
-      "active": true,
+      "active": false,
       "priority": 2
     },
     {
@@ -322,11 +330,11 @@
     },
     {
       "id": 203,
-      "text": "Rudel’s branch is one of the largest in the family, with multiple children and great-grandchildren.",
-      "type": "branch",
-      "tags": ["rudel"],
+      "text": "Rudel’s branch is one of the largest in the family, with four children and four great-grandchildren.",
+      "type": "stat",
+      "tags": ["branch", "rudel", "family-size"],
       "active": true,
-      "priority": 3
+      "priority": 2
     },
     {
       "id": 204,
@@ -597,7 +605,7 @@
     },
     {
       "id": 605,
-      "text": "Leo loves his taho.",
+      "text": "🧋 Leo loves his taho.",
       "type": "favorite",
       "tags": ["food", "favorite"],
       "active": true,
