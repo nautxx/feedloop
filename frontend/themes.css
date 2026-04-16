@@ -31,6 +31,19 @@ body.theme-calm {
     --surface-text-color: var(--bg-color);
 }
 
+body.theme-frozen-llama {
+    --bg-color: #9BF2EA;
+    --bg-alt-color: #97f1e8;
+    --accent-color: #6D44A5;
+    --text-color: #B690FD;
+    --sub-color: #FFFFFF;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
 body.theme-lavender {
     --bg-color: #ADA6C2;
     --bg-alt-color: #9c90be;
@@ -153,6 +166,13 @@ body.theme-ube {
     --swatch-accent-color: #B48126;
     --swatch-text-color: #382C21;
     --swatch-sub-color: #847E78;
+}
+
+.theme-option[data-theme="frozen-llama"] {
+    --swatch-bg-color: #9BF2EA;
+    --swatch-accent-color: #6D44A5;
+    --swatch-text-color: #B690FD;
+    --swatch-sub-color: #FFFFFF;
 }
 
 .theme-option[data-theme="lavender"] {
