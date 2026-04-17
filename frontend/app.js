@@ -352,7 +352,7 @@ const Carousel = {
 
     container.innerHTML = "";
 
-    notifications.forEach((item) => {
+    notifications.forEach((notification) => {
       const row = document.createElement("div");
       row.className = "notification-row";
 
