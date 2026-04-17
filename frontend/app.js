@@ -356,8 +356,8 @@ const Carousel = {
       const row = document.createElement("div");
       row.className = "notification-row";
 
-      const type = item.type
-        ? item.type.charAt(0).toUpperCase() + item.type.slice(1)
+      const type = notification.type
+        ? notification.type.charAt(0).toUpperCase() + notification.type.slice(1)
         : "Notification";
 
       row.innerHTML = `
