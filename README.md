@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[![](https://raw.githubusercontent.com/nautxx/feedloop/main/frontend/static/images/feedloop_ghbanner.png)](https://barnachea.fyi/)
-=======
 [![](https://github.com/nautxx/feedloop/tree/main/frontend/static/images/feedloop_ghbanner.png?raw=true)](https://barnachea.fyi/)
->>>>>>> origin/main
 <br />
 
 [![Fontawesome](https://img.shields.io/badge/fontawesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=white)](https://fontawesome.com/)
