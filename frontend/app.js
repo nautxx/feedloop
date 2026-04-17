@@ -34,7 +34,20 @@
 
 /**
  * Available theme names
- * @typedef {"calm" | "lavender" | "quiet" | "sage" | "ocean" | "sunset" | "ink"} Theme
+ * @typedef {
+ *   "calm" |
+ *   "cheesecake" |
+ *   "frozen-llama" |
+ *   "lavender" |
+ *   "muted" |
+ *   "olivia" |
+ *   "paper" |
+ *   "pastel" |
+ *   "trackspec" |
+ *   "trackspec-dark" |
+ *   "quiet" |
+ *   "ube"
+ * } Theme
  */
 
 const Carousel = {
