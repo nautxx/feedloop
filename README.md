@@ -1,6 +1,6 @@
 # About
 
-Famifaqs is a minimalistic, customizable fact carousel designed to surface meaningful, memorable, and dynamic facts over time. 
+Feedloop is a minimalistic, customizable fact carousel designed to surface meaningful, memorable, and dynamic facts over time. 
 
 Built with simplicity and flexibility in mind, it allows you to curate structured datasets—ranging from family history and personal anecdotes to timelines and milestones—and present them in a clean, distraction-free interface.
 
