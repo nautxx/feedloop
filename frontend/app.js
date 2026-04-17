@@ -197,7 +197,6 @@ const Carousel = {
   normalizeItems(items) {
     return (items || [])
       .filter((item) => item && item.active !== false)
-      .map((item) => ({ ...item }))
       .filter((item) => typeof item.text === "string" && item.text.trim());
   },
 
