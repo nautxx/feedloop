@@ -1,5 +1,5 @@
 /**
- * A single item item
+ * A single item
  * @typedef {Object} Item
  * @property {string} id
  * @property {string} text
