@@ -88,7 +88,7 @@ const Carousel = {
   },
 
   cacheElements() {
-    this.elements.item = document.getElementById("fact"); // unchanged
+    this.elements.item = document.getElementById("fact");
     this.elements.themeToggle = document.getElementById("theme-toggle");
     this.elements.themeModal = document.getElementById("theme-modal");
   },
