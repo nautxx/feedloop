@@ -378,13 +378,26 @@ const Carousel = {
   },
 
   setTheme(theme) {
-    const themeClasses = Array.from(document.body.classList).filter((c) =>
-      c.startsWith("theme-"),
+    const themeClasses = Array.from(document.body.classList).filter(
+      (className) => className.startsWith("theme-"),
     );
 
     document.body.classList.remove(...themeClasses);
     document.body.classList.add(`theme-${theme}`);
     localStorage.setItem("Carousel-theme", theme);
+
+    // Highlight active theme button
+    document.querySelectorAll("[data-theme]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.theme === theme);
+    });
+
+    // Update footer label text
+    if (this.elements.themeToggle) {
+      const label = this.elements.themeToggle.querySelector(".theme-label");
+      if (label) {
+        label.textContent = theme;
+      }
+    }
   },
 
   openDrawer() {
