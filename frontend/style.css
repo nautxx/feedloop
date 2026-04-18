@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at top, var(--bg-color), var(--bg-alt-color));
+    background: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-sans);
     text-align: center;
