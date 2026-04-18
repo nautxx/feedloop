@@ -513,3 +513,11 @@ body {
     color: var(--sub-color);
     text-align: left;
 }
+
+kbd {
+    color: var(--bg-color);
+    background-color: var(--text-color);
+    border-radius: .25em;
+    padding: .2em .4em;
+    font-size: .75em;
+}
