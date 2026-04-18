@@ -20,7 +20,7 @@
 
 body.theme-calm {
     --bg-color: #F1E1C7;
-    --bg-alt-color: #eddcc0;
+    --bg-alt-color: #dccbb1;
     --accent-color: #B48126;
     --text-color: #382C21;
     --sub-color: #847E78;
@@ -46,7 +46,7 @@ body.theme-cheesecake {
 
 body.theme-frozen-llama {
     --bg-color: #9BF2EA;
-    --bg-alt-color: #97f1e8;
+    --bg-alt-color: #80E6DE;
     --accent-color: #6D44A5;
     --text-color: #B690FD;
     --sub-color: #FFFFFF;
