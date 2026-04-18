@@ -272,6 +272,10 @@ h1 {
     opacity: 1;
 }
 
+.control-option i {
+    margin-right: 0.4em;
+}
+
 .bottom-bar {
     position: fixed;
     left: 50%;
