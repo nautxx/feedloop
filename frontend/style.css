@@ -13,10 +13,10 @@ body {
 }
 
 .container {
-    max-width: 980px;
+    max-width: 1300px;
     margin: 0 auto;
     padding:
-        calc(48px + env(safe-area-inset-top, 0px))
+        calc(24px + env(safe-area-inset-top, 0px))
         24px calc(32px + env(safe-area-inset-bottom, 0px));
     min-height: 100svh;
     display: flex;
@@ -71,12 +71,13 @@ h1 {
 }
 
 .top-row {
-    position: fixed;
-    top: calc(20px + env(safe-area-inset-top, 0px));
-    right: calc(20px + env(safe-area-inset-right, 0px));
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto 16px;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
+    gap: 12px;
 }
 
 .top-row-button {
