@@ -114,11 +114,11 @@ const Carousel = {
 
   setSpeed(speed) {
     const map = {
-      slow: 1.25,
+      slow: 1.5,
 
       normal: 1,
 
-      fast: 0.75,
+      fast: 0.5,
     };
 
     this.state.speedMultiplier = map[speed] || 1;
@@ -128,6 +128,11 @@ const Carousel = {
     document.querySelectorAll("[data-speed]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.speed === speed);
     });
+  },
+
+  formatThemeName(name) {
+    return name
+      .replace(/-/g, " ");
   },
 
   openThemeModal() {
@@ -533,8 +538,9 @@ const Carousel = {
     // Update footer label text
     if (this.elements.themeToggle) {
       const label = this.elements.themeToggle.querySelector(".theme-label");
+
       if (label) {
-        label.textContent = theme;
+        label.textContent = this.formatThemeName(theme);
       }
     }
   },

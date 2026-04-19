@@ -27,17 +27,11 @@
 </head>
 
 <body>
-    <div class="top-nav">
-        <button id="notice-toggle">
-            <i class="fa-solid fa-bell"></i>
-        </button>
-    </div>
     <div class="drawer" id="notices-drawer" hidden>
         <div class="drawer-overlay"></div>
-    
+
         <aside class="drawer-panel">
             <div class="drawer-body">
-    
                 <section class="drawer-section">
                     <div class="drawer-section-header">
                         <i class="fa-solid fa-message"></i>
@@ -47,45 +41,57 @@
                         <p class="drawer-empty">Nothing to show</p>
                     </div>
                 </section>
-                <!-- <div class="drawer-divider"></div> -->
             </div>
         </aside>
     </div>
-    <div class="control-bar" aria-label="Feed controls">
-        <div class="control-group" role="group" aria-label="Feed settings">
-            <button class="control-option is-active" data-mode="all"><i class="fa-solid fa-clock"></i> speed</button>
-        </div>
-        <div class="control-group" role="group" aria-label="Feed speed">
-            <button type="button" class="control-option" data-speed="fast">fast</button>
-            <button type="button" class="control-option is-active" data-speed="normal">medium</button>
-            <button type="button" class="control-option" data-speed="slow">slow</button>
-        </div>
-    </div>
-    <main class="container" aria-label="Barnachea Did You Know">
-        <header class="hero">
-            <h1>Did You Know?</h1>
-            <p class="subtitle">Barnachea Edition</p>
-        </header>
 
-        <section class="item-wrap" aria-live="polite" aria-atomic="true">
-            <p id="item" class="item"></p>
-        </section>
+    <main class="container" aria-label="Barnachea Did You Know">
+        <div class="top-row">
+            <button id="notice-toggle" class="top-row-button" type="button" aria-label="Open notifications">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+        </div>
+
+        <div class="control-bar" aria-label="Feed controls">
+            <div class="control-group" role="group" aria-label="Feed settings">
+                <button class="control-option is-active" data-mode="all" type="button">
+                    <i class="fa-solid fa-clock"></i> rate
+                </button>
+            </div>
+            <div class="control-group" role="group" aria-label="Feed speed">
+                <button type="button" class="control-option" data-speed="slow">slow</button>
+                <button type="button" class="control-option is-active" data-speed="normal">normal</button>
+                <button type="button" class="control-option" data-speed="fast">fast</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <header class="hero">
+                <h1>Did You Know?</h1>
+                <p class="subtitle">Barnachea Edition</p>
+            </header>
+
+            <section class="item-wrap" aria-live="polite" aria-atomic="true">
+                <p id="item" class="item"></p>
+            </section>
+        </div>
+        
+        <div class="bottom-bar" aria-label="Site controls">
+            <a href="https://github.com/nautxx/feedloop" target="_blank" rel="noopener">
+                <i class="fa-solid fa-code"></i> github
+            </a>
+            <span class="divider">·</span>
+            <button type="button" id="theme-toggle">
+                <i class="fa-solid fa-palette"></i>
+                <span class="theme-label">theme</span>
+            </button>
+            <button type="button" id="version-toggle">
+                <i class="fa-solid fa-code-branch"></i>
+                <span class="theme-label">v0.1.0-alpha</span>
+            </button>
+        </div>
     </main>
-    <div class="bottom-bar" aria-label="Site controls">
-        <a href="https://github.com/nautxx/feedloop" target="_blank" rel="noopener">
-            <i class="fa-solid fa-code"></i> github
-        </a>
-        <span class="divider">·</span>
-        <button type="button" id="theme-toggle">
-            <i class="fa-solid fa-palette"></i>
-            <span class="theme-label">theme</span>
-        </button>
-        <button type="button" id="version-toggle">
-            <i class="fa-solid fa-code-branch"></i>
-            <span class="theme-label">v0.1.0-alpha</span>
-        </button>
-    </div>
-    
+
     <div class="theme-modal" id="theme-modal" hidden>
         <div class="theme-modal-panel" role="dialog" aria-modal="true" aria-label="Choose theme">
             <button type="button" data-theme="calm" class="theme-option">
@@ -97,12 +103,14 @@
             <button type="button" data-theme="cheesecake" class="theme-option">
                 <span>cheesecake</span>
                 <span class="swatch">
-                    <i></i><i></i><i></i></span>
+                    <i></i><i></i><i></i>
+                </span>
             </button>
             <button type="button" data-theme="frozen-llama" class="theme-option">
                 <span>frozen llama</span>
                 <span class="swatch">
-                    <i></i><i></i><i></i></span>
+                    <i></i><i></i><i></i>
+                </span>
             </button>
             <button type="button" data-theme="lavender" class="theme-option">
                 <span>lavender</span>
@@ -131,17 +139,20 @@
             <button type="button" data-theme="pastel" class="theme-option">
                 <span>pastel</span>
                 <span class="swatch">
-                    <i></i><i></i><i></i></span>
+                    <i></i><i></i><i></i>
+                </span>
             </button>
             <button type="button" data-theme="trackspec" class="theme-option">
                 <span>trackspec</span>
                 <span class="swatch">
-                    <i></i><i></i><i></i></span>
+                    <i></i><i></i><i></i>
+                </span>
             </button>
             <button type="button" data-theme="trackspec-dark" class="theme-option">
                 <span>trackspec dark</span>
                 <span class="swatch">
-                    <i></i><i></i><i></i></span>
+                    <i></i><i></i><i></i>
+                </span>
             </button>
             <button type="button" data-theme="quiet" class="theme-option">
                 <span>quiet</span>
