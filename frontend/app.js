@@ -130,6 +130,11 @@ const Carousel = {
     });
   },
 
+  formatThemeName(name) {
+    return name
+      .replace(/-/g, " ");
+  },
+
   openThemeModal() {
     const modal = this.elements.themeModal;
     const toggle = this.elements.themeToggle;
@@ -533,8 +538,9 @@ const Carousel = {
     // Update footer label text
     if (this.elements.themeToggle) {
       const label = this.elements.themeToggle.querySelector(".theme-label");
+
       if (label) {
-        label.textContent = theme;
+        label.textContent = this.formatThemeName(theme);
       }
     }
   },
