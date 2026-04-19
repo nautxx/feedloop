@@ -96,6 +96,19 @@ body.theme-muted {
     --surface-text-color: var(--bg-color);
 }
 
+body.theme-nebula {
+    --bg-color: #212135;
+    --bg-alt-color: #191928;
+    --accent-color: #BF3C87;
+    --text-color: #1BB3B8;
+    --sub-color: #828686;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
 body.theme-olivia {
     --bg-color: #1C1B1D;
     --bg-alt-color: #262223;
@@ -227,6 +240,13 @@ body.theme-ube {
     --swatch-accent-color: #C5B4E2;
     --swatch-text-color: #939EAD;
     --swatch-sub-color: #B1E3E3;
+}
+
+.theme-option[data-theme="nebula"] {
+    --swatch-bg-color: #212135;
+    --swatch-accent-color: #BF3C87;
+    --swatch-text-color: #1BB3B8;
+    --swatch-sub-color: #828686;
 }
 
 .theme-option[data-theme="olivia"] {
