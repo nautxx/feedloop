@@ -218,12 +218,6 @@ h1 {
         transform 0.1s ease;
 }
 
-.bottom-bar button:hover,
-.bottom-bar a:hover {
-    opacity: 1;
-    color: var(--sub-color);
-}
-
 .bottom-bar button:focus-visible,
 .bottom-bar a:focus-visible {
     outline: none;
@@ -732,7 +726,7 @@ kbd {
 
     .bottom-bar button:hover,
     .bottom-bar a:hover {
-        color: var(--sub-color);
+        color: var(--bottom-bar-hover-color, var(--sub-color));
     }
 
     .theme-option:hover {
