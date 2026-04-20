@@ -549,7 +549,9 @@ kbd {
 
     transform: scale(0.96);
     opacity: 0;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition:
+        transform 0.1s ease,
+        opacity 0.1s ease;
 }
 
 .settings-modal.is-open .settings-modal-panel {
@@ -582,7 +584,9 @@ kbd {
     color: var(--surface-text-color);
     opacity: 0.8;
     cursor: pointer;
-    transition: opacity 0.1s ease, color 0.1s ease;
+    transition: 
+        opacity 0.1s ease,
+        color 0.1s ease;
 }
 
 .settings-close-button:hover {
@@ -640,7 +644,10 @@ kbd {
     text-align: center;
 
     cursor: pointer;
-    transition: background 0.12s ease, color 0.12s ease, opacity 0.12s ease;
+    transition: 
+        background 0.1s ease,
+        color 0.1s ease,
+        opacity 0.1s ease;
 }
 
 .settings-option:hover {
