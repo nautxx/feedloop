@@ -12,10 +12,10 @@
     --text-color: #2f241c;
     --sub-color: #6b625a;
 
-    --surface-color: var(--bg-color);
+    /* --surface-color: var(--bg-color);
     --surface-hover-color: var(--sub-color);
     --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --surface-text-color: var(--bg-color); */
 }
 
 body.theme-aguila {
@@ -63,6 +63,19 @@ body.theme-frozen-llama {
     --accent-color: #6D44A5;
     --text-color: #B690FD;
     --sub-color: #FFFFFF;
+
+    --surface-color: var(--bg-color);
+    --surface-hover-color: var(--sub-color);
+    --surface-active-color: var(--sub-color);
+    --surface-text-color: var(--bg-color);
+}
+
+body.theme-laser {
+    --bg-color: #221B43;
+    --bg-alt-color: #1E173B;
+    --accent-color: #019EAE;
+    --text-color: #B82355;
+    --sub-color: #DBE7E8;
 
     --surface-color: var(--bg-color);
     --surface-hover-color: var(--sub-color);
@@ -226,6 +239,13 @@ body.theme-ube {
     --swatch-accent-color: #6D44A5;
     --swatch-text-color: #B690FD;
     --swatch-sub-color: #FFFFFF;
+}
+
+.theme-option[data-theme="laser"] {
+    --swatch-bg-color: #221B43;
+    --swatch-accent-color: #019EAE;
+    --swatch-text-color: #B82355;
+    --swatch-sub-color: #DBE7E8;
 }
 
 .theme-option[data-theme="lavender"] {
