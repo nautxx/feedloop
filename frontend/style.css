@@ -388,6 +388,7 @@ h1 {
 
 .theme-modal-panel {
     max-height: 80svh;
+    width: min(480px, 92vw);
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
