@@ -241,6 +241,11 @@ const Carousel = {
         return this.closeSettingsModal();
       }
 
+      // block interaction when modal is open
+      if (this.elements.settingsModal && !this.elements.settingsModal.hidden) {
+        return;
+      }
+
       if (githubLink) return;
 
       if (noticeToggle) return this.openDrawer();
