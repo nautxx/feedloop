@@ -495,3 +495,94 @@ kbd {
     padding: .2em .4em;
     font-size: .75em;
 }
+
+.mobile-settings-group {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .desktop-controls {
+        display: none;
+    }
+    .mobile-settings-group {
+        display: inline-flex;
+    }
+    .control-bar {
+        justify-content: center;
+    }
+}
+
+.settings-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    background: var(--bg-color);
+}
+
+.settings-modal[hidden] {
+    display: none;
+}
+
+.settings-modal-panel {
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.settings-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.settings-modal-header h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.settings-close-button {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--text-color);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.settings-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.settings-section h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sub-color);
+}
+
+.settings-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

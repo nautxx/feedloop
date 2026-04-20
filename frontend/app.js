@@ -74,6 +74,7 @@ const Carousel = {
     history: [],
     historyIndex: -1,
     speedMultiplier: 1,
+    mode: "fade",
     touch: {
       startX: 0,
       endX: 0,
@@ -90,6 +91,7 @@ const Carousel = {
     this.cacheElements();
     this.applySavedTheme();
     this.applySavedSpeed();
+    this.applySavedMode();
     this.bindEvents();
     this.loadItems();
     this.loadNotifications();
@@ -99,6 +101,7 @@ const Carousel = {
     this.elements.item = document.getElementById("item");
     this.elements.themeToggle = document.getElementById("theme-toggle");
     this.elements.themeModal = document.getElementById("theme-modal");
+    this.elements.settingsModal = document.getElementById("settings-modal");
   },
 
   applySavedTheme() {
@@ -128,6 +131,19 @@ const Carousel = {
     document.querySelectorAll("[data-speed]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.speed === speed);
     });
+  },
+
+  setMode(mode) {
+    this.state.mode = mode;
+    localStorage.setItem("Carousel-mode", mode);
+    document.querySelectorAll("[data-mode]").forEach((btn) => {
+      btn.classList.toggle("is-active", btn.dataset.mode === mode);
+    });
+  },
+
+  applySavedMode() {
+    const saved = localStorage.getItem("Carousel-mode") || "fade";
+    this.setMode(saved);
   },
 
   formatThemeName(name) {
@@ -169,9 +185,24 @@ const Carousel = {
     }, 150);
   },
 
+  openSettingsModal() {
+    const modal = this.elements.settingsModal;
+    if (!modal) return;
+    modal.hidden = false;
+  },
+
+  closeSettingsModal() {
+    const modal = this.elements.settingsModal;
+    if (!modal) return;
+    modal.hidden = true;
+  },
+
   bindEvents() {
     document.body.addEventListener("click", (event) => {
       const speedButton = event.target.closest("[data-speed]");
+      const modeButton = event.target.closest("[data-mode]");
+      const settingsToggle = event.target.closest("#settings-toggle");
+      const settingsClose = event.target.closest("#settings-close");
       const themeToggle = event.target.closest("#theme-toggle");
       const themeButton = event.target.closest("[data-theme]");
       const modalPanel = event.target.closest(".theme-modal-panel");
@@ -182,6 +213,14 @@ const Carousel = {
         this.setSpeed(speedButton.dataset.speed);
         return;
       }
+
+      if (modeButton) {
+        this.setMode(modeButton.dataset.mode);
+        return;
+      }
+
+      if (settingsToggle) return this.openSettingsModal();
+      if (settingsClose) return this.closeSettingsModal();
 
       if (githubLink) return;
 
@@ -221,6 +260,7 @@ const Carousel = {
       if (event.key === "Escape") {
         this.closeThemeModal();
         this.closeDrawer();
+        this.closeSettingsModal();
         return;
       }
 
@@ -403,9 +443,22 @@ const Carousel = {
     const el = this.elements.item;
     const duration = this.config.fadeDurationMs;
 
-    el.style.transition = `opacity ${duration}ms ease, filter ${duration}ms ease`;
-    el.style.opacity = "0";
-    el.style.filter = "blur(1px)";
+    if (this.state.mode === "instant") {
+      el.textContent = item.text;
+      return;
+    }
+
+    if (this.state.mode === "fade") {
+      el.style.transition = `opacity ${duration}ms ease, filter ${duration}ms ease`;
+      el.style.opacity = "0";
+      el.style.filter = "blur(1px)";
+
+      setTimeout(() => {
+        el.textContent = item.text;
+        el.style.opacity = "1";
+        el.style.filter = "blur(0px)";
+      }, duration);
+    }
 
     setTimeout(() => {
       el.textContent = item.text;

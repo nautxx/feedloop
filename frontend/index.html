@@ -52,7 +52,7 @@
             </button>
         </div>
         <div class="control-bar" aria-label="Feed controls">
-            <div class="control-group" role="group" aria-label="Feed settings">
+            <div class="control-group desktop-controls" role="group" aria-label="Feed settings">
                 <button class="control-option" data-mode="all" type="button">
                     <i class="fa-brands fa-modx"></i> mode
                 </button>
@@ -60,10 +60,15 @@
                     <i class="fa-solid fa-clock"></i> rate
                 </button>
             </div>
-            <div class="control-group" role="group" aria-label="Feed speed">
+            <div class="control-group desktop-controls" role="group" aria-label="Feed speed">
                 <button type="button" class="control-option" data-speed="slow">slow</button>
                 <button type="button" class="control-option is-active" data-speed="normal">normal</button>
                 <button type="button" class="control-option" data-speed="fast">fast</button>
+            </div>
+            <div class="control-group mobile-settings-group" role="group" aria-label="Feed settings menu">
+                <button class="control-option" id="settings-toggle" type="button">
+                    <i class="fa-solid fa-sliders"></i> settings
+                </button>
             </div>
         </div>
 
@@ -93,6 +98,37 @@
             </button>
         </div>
     </main>
+
+    <div class="settings-modal" id="settings-modal" hidden>
+        <div class="settings-modal-panel" role="dialog" aria-modal="true" aria-label="Feed settings">
+            <div class="settings-modal-header">
+                <h3>Settings</h3>
+                <button type="button" id="settings-close" class="settings-close-button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+    
+            <div class="settings-modal-body">
+                <section class="settings-section">
+                    <h4>Mode</h4>
+                    <div class="settings-options">
+                        <button type="button" class="control-option is-active" data-mode="fade">fade</button>
+                        <button type="button" class="control-option" data-mode="typing">typing</button>
+                        <button type="button" class="control-option" data-mode="instant">instant</button>
+                    </div>
+                </section>
+    
+                <section class="settings-section">
+                    <h4>Rate</h4>
+                    <div class="settings-options">
+                        <button type="button" class="control-option" data-speed="slow">slow</button>
+                        <button type="button" class="control-option is-active" data-speed="normal">normal</button>
+                        <button type="button" class="control-option" data-speed="fast">fast</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <div class="theme-modal" id="theme-modal" hidden>
         <div class="theme-modal-panel" role="dialog" aria-modal="true" aria-label="Choose theme">
