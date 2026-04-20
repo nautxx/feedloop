@@ -53,18 +53,17 @@
         </div>
         <div class="control-bar" aria-label="Feed controls">
             <div class="control-group desktop-controls" role="group" aria-label="Feed settings">
-                <button class="control-option" data-mode="all" type="button">
+                <button class="control-option" data-settings-group="mode" type="button">
                     <i class="fa-brands fa-modx"></i> mode
                 </button>
-                <button class="control-option is-active" data-mode="all" type="button">
+                <button class="control-option is-active" data-settings-group="rate" type="button">
                     <i class="fa-solid fa-clock"></i> rate
                 </button>
             </div>
-            <div class="control-group desktop-controls" role="group" aria-label="Feed speed">
-                <button type="button" class="control-option" data-speed="slow">slow</button>
-                <button type="button" class="control-option is-active" data-speed="normal">normal</button>
-                <button type="button" class="control-option" data-speed="fast">fast</button>
-            </div>
+        
+            <div class="control-group desktop-controls" id="desktop-settings-options" role="group"
+                aria-label="Feed setting options"></div>
+        
             <div class="control-group mobile-settings-group" role="group" aria-label="Feed settings menu">
                 <button class="control-option" id="settings-toggle" type="button">
                     <i class="fa-solid fa-sliders"></i> settings

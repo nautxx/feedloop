@@ -63,6 +63,18 @@ const Carousel = {
       empty: "No content available.",
       error: "Could not load content.",
     },
+    settingsGroups: {
+      mode: [
+        { label: "fade", value: "fade", attr: "data-mode" },
+        { label: "typing", value: "typing", attr: "data-mode" },
+        { label: "instant", value: "instant", attr: "data-mode" },
+      ],
+      rate: [
+        { label: "slow", value: "slow", attr: "data-speed" },
+        { label: "normal", value: "normal", attr: "data-speed" },
+        { label: "fast", value: "fast", attr: "data-speed" },
+      ],
+    },
   },
 
   state: {
@@ -75,6 +87,7 @@ const Carousel = {
     historyIndex: -1,
     speedMultiplier: 1,
     mode: "fade",
+    activeSettingsGroup: "rate",
     touch: {
       startX: 0,
       endX: 0,
@@ -92,6 +105,7 @@ const Carousel = {
     this.applySavedTheme();
     this.applySavedSpeed();
     this.applySavedMode();
+    this.setSettingsGroup(this.state.activeSettingsGroup);
     this.bindEvents();
     this.loadItems();
     this.loadNotifications();
@@ -102,6 +116,13 @@ const Carousel = {
     this.elements.themeToggle = document.getElementById("theme-toggle");
     this.elements.themeModal = document.getElementById("theme-modal");
     this.elements.settingsModal = document.getElementById("settings-modal");
+    this.elements.desktopSettingsOptions = document.getElementById(
+      "desktop-settings-options",
+    );
+    this.elements.settingsSectionTitle = document.getElementById(
+      "settings-section-title",
+    );
+    this.elements.settingsOptions = document.getElementById("settings-options");
   },
 
   applySavedTheme() {
@@ -123,20 +144,26 @@ const Carousel = {
     };
 
     this.state.speedMultiplier = map[speed] || 1;
-
     localStorage.setItem("Carousel-speed", speed);
 
     document.querySelectorAll("[data-speed]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.speed === speed);
     });
+
+    this.renderDesktopSettingsOptions();
+    this.renderSettingsOptions(this.state.activeSettingsGroup);
   },
 
   setMode(mode) {
     this.state.mode = mode;
     localStorage.setItem("Carousel-mode", mode);
+
     document.querySelectorAll("[data-mode]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.mode === mode);
     });
+
+    this.renderDesktopSettingsOptions();
+    this.renderSettingsOptions(this.state.activeSettingsGroup);
   },
 
   applySavedMode() {
@@ -182,12 +209,12 @@ const Carousel = {
     }, 150);
   },
 
-  openSettingsModal() {
+  openSettingsModal(group = this.state.activeSettingsGroup) {
     const modal = this.elements.settingsModal;
     if (!modal) return;
 
     modal.hidden = false;
-    this.setSettingsGroup("mode");
+    this.setSettingsGroup(group);
 
     requestAnimationFrame(() => {
       modal.classList.add("is-open");
@@ -215,47 +242,76 @@ const Carousel = {
     return speedMap[this.state.speedMultiplier] || "normal";
   },
 
+  getSettingsOptions(group) {
+    return this.config.settingsGroups[group] || [];
+  },
+
+  isSettingsOptionActive(group, value) {
+    if (group === "mode") {
+      return this.state.mode === value;
+    }
+
+    if (group === "rate") {
+      return this.getCurrentSpeedKey() === value;
+    }
+
+    return false;
+  },
+
+  renderDesktopSettingsOptions() {
+    const container = this.elements.desktopSettingsOptions;
+    if (!container) return;
+
+    const options = this.getSettingsOptions(this.state.activeSettingsGroup);
+
+    container.innerHTML = options
+      .map((option) => {
+        const isActive = this.isSettingsOptionActive(
+          this.state.activeSettingsGroup,
+          option.value,
+        );
+
+        return `
+        <button
+          type="button"
+          class="control-option ${isActive ? "is-active" : ""}"
+          ${option.attr}="${option.value}">
+          ${option.label}
+        </button>
+      `;
+      })
+      .join("");
+  },
+
   renderSettingsOptions(group) {
-    const title = document.getElementById("settings-section-title");
-    const container = document.getElementById("settings-options");
+    const title = this.elements.settingsSectionTitle;
+    const container = this.elements.settingsOptions;
 
     if (!title || !container) return;
 
-    const options =
-      group === "mode"
-        ? [
-            { label: "fade", value: "fade", attr: "data-mode" },
-            { label: "typing", value: "typing", attr: "data-mode" },
-            { label: "instant", value: "instant", attr: "data-mode" },
-          ]
-        : [
-            { label: "slow", value: "slow", attr: "data-speed" },
-            { label: "normal", value: "normal", attr: "data-speed" },
-            { label: "fast", value: "fast", attr: "data-speed" },
-          ];
+    const options = this.getSettingsOptions(group);
 
     title.textContent = group === "mode" ? "Mode" : "Rate";
 
     container.innerHTML = options
       .map((option) => {
-        const isActive =
-          group === "mode"
-            ? this.state.mode === option.value
-            : this.getCurrentSpeedKey() === option.value;
+        const isActive = this.isSettingsOptionActive(group, option.value);
 
         return `
-          <button
-            type="button"
-            class="settings-option ${isActive ? "is-active" : ""}"
-            ${option.attr}="${option.value}">
-            ${option.label}
-          </button>
-        `;
+        <button
+          type="button"
+          class="settings-option ${isActive ? "is-active" : ""}"
+          ${option.attr}="${option.value}">
+          ${option.label}
+        </button>
+      `;
       })
       .join("");
   },
 
   setSettingsGroup(group) {
+    this.state.activeSettingsGroup = group;
+
     document.querySelectorAll("[data-settings-group]").forEach((button) => {
       button.classList.toggle(
         "is-active",
@@ -263,6 +319,7 @@ const Carousel = {
       );
     });
 
+    this.renderDesktopSettingsOptions();
     this.renderSettingsOptions(group);
   },
 
@@ -270,16 +327,27 @@ const Carousel = {
     document.body.addEventListener("click", (event) => {
       const speedButton = event.target.closest("[data-speed]");
       const modeButton = event.target.closest("[data-mode]");
+      const settingsGroupButton = event.target.closest("[data-settings-group]");
       const settingsToggle = event.target.closest("#settings-toggle");
       const settingsClose = event.target.closest("#settings-close");
       const settingsModal = event.target.closest("#settings-modal");
       const settingsPanel = event.target.closest(".settings-modal-panel");
-      const settingsTab = event.target.closest("[data-settings-group]");
       const themeToggle = event.target.closest("#theme-toggle");
       const themeButton = event.target.closest("[data-theme]");
       const modalPanel = event.target.closest(".theme-modal-panel");
       const githubLink = event.target.closest(".bottom-bar a");
       const noticeToggle = event.target.closest("#notice-toggle");
+
+      if (settingsGroupButton) {
+        const group = settingsGroupButton.dataset.settingsGroup;
+        this.setSettingsGroup(group);
+
+        if (window.innerWidth <= 480) {
+          this.openSettingsModal(group);
+        }
+
+        return;
+      }
 
       if (speedButton) {
         this.setSpeed(speedButton.dataset.speed);
@@ -294,12 +362,6 @@ const Carousel = {
       if (settingsToggle) return this.openSettingsModal();
       if (settingsClose) return this.closeSettingsModal();
 
-      if (settingsTab) {
-        this.setSettingsGroup(settingsTab.dataset.settingsGroup);
-        return;
-      }
-
-      // close when clicking outside settings panel
       if (
         this.elements.settingsModal &&
         !this.elements.settingsModal.hidden &&
@@ -309,7 +371,6 @@ const Carousel = {
         return this.closeSettingsModal();
       }
 
-      // block interaction when modal is open
       if (this.elements.settingsModal && !this.elements.settingsModal.hidden) {
         return;
       }
