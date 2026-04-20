@@ -138,6 +138,18 @@ const Carousel = {
     this.setSpeed(saved);
   },
 
+  getTypingCharMs() {
+    const map = {
+      slow: 40,
+
+      normal: 22,
+
+      fast: 12,
+    };
+
+    return map[this.getCurrentSpeedKey()] || 22;
+  },
+
   clearTypingTimer() {
     if (this.state.typingTimer) {
       clearTimeout(this.state.typingTimer);
@@ -145,6 +157,16 @@ const Carousel = {
     }
 
     this.state.isTyping = false;
+  },
+
+  getTypingStartDelayMs() {
+    const map = {
+      slow: 120,
+      normal: 80,
+      fast: 40,
+    };
+
+    return map[this.getCurrentSpeedKey()] || 80;
   },
 
   typeItem(text) {
@@ -160,6 +182,23 @@ const Carousel = {
     el.style.filter = "blur(0px)";
     el.style.transform = "scale(1)";
 
+    const speed = this.getCurrentSpeedKey();
+
+    const charMsMap = {
+      slow: 55,
+      normal: 22,
+      fast: 8,
+    };
+
+    const startDelayMap = {
+      slow: 150,
+      normal: 80,
+      fast: 20,
+    };
+
+    const typingCharMs = charMsMap[speed] || 22;
+    const typingStartDelayMs = startDelayMap[speed] || 80;
+
     let index = 0;
 
     const typeNext = () => {
@@ -169,17 +208,14 @@ const Carousel = {
       index += 1;
 
       if (index <= text.length) {
-        this.state.typingTimer = setTimeout(typeNext, this.config.typingCharMs);
+        this.state.typingTimer = setTimeout(typeNext, typingCharMs);
       } else {
         this.state.isTyping = false;
         this.state.typingTimer = null;
       }
     };
 
-    this.state.typingTimer = setTimeout(
-      typeNext,
-      this.config.typingStartDelayMs,
-    );
+    this.state.typingTimer = setTimeout(typeNext, typingStartDelayMs);
   },
 
   setSpeed(speed) {
@@ -793,11 +829,28 @@ const Carousel = {
     this.state.lastItemId = item.id;
   },
 
+  // scheduleNextItem() {
+  //   const currentText = this.elements.item.textContent || "";
+  //   const delay =
+  //     (this.getDisplayTime(currentText) + this.config.basePauseMs) *
+  //     this.state.speedMultiplier;
+
+  //   this.state.rotationTimer = setTimeout(() => {
+  //     this.showNextItem();
+  //     this.scheduleNextItem();
+  //   }, delay);
+  // },
   scheduleNextItem() {
     const currentText = this.elements.item.textContent || "";
-    const delay =
+    let delay =
       (this.getDisplayTime(currentText) + this.config.basePauseMs) *
       this.state.speedMultiplier;
+
+    const cadenceFactors = [0.25, 1, 1.75];
+    const randomFactor =
+      cadenceFactors[Math.floor(Math.random() * cadenceFactors.length)];
+
+    delay *= randomFactor;
 
     this.state.rotationTimer = setTimeout(() => {
       this.showNextItem();
