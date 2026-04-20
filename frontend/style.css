@@ -663,6 +663,14 @@ kbd {
     border-radius: 999px;
 }
 
+#desktop-settings-options {
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+        width 0.18s ease,
+        opacity 0.1s ease;
+}
+
 @media (max-width: 480px) {
     .desktop-controls {
         display: none;

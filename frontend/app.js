@@ -274,25 +274,9 @@ const Carousel = {
     const container = this.elements.desktopSettingsOptions;
     if (!container) return;
 
-    const options = this.getSettingsOptions(this.state.activeSettingsGroup);
-
-    container.innerHTML = options
-      .map((option) => {
-        const isActive = this.isSettingsOptionActive(
-          this.state.activeSettingsGroup,
-          option.value,
-        );
-
-        return `
-        <button
-          type="button"
-          class="control-option ${isActive ? "is-active" : ""}"
-          ${option.attr}="${option.value}">
-          ${option.label}
-        </button>
-      `;
-      })
-      .join("");
+    container.innerHTML = this.getDesktopSettingsMarkup(
+      this.state.activeSettingsGroup,
+    );
   },
 
   renderSettingsOptions(group) {
@@ -331,8 +315,48 @@ const Carousel = {
       .join("");
   },
 
+  getDesktopSettingsMarkup(group) {
+    const options = this.getSettingsOptions(group);
+
+    return options
+      .map((option) => {
+        const isActive = this.isSettingsOptionActive(group, option.value);
+
+        return `
+        <button
+          type="button"
+          class="control-option ${isActive ? "is-active" : ""}"
+          ${option.attr}="${option.value}">
+          ${option.label}
+        </button>
+      `;
+      })
+      .join("");
+  },
+
+  measureDesktopSettingsWidth(group) {
+    const probe = document.createElement("div");
+    probe.className = "control-group desktop-controls";
+    probe.id = "desktop-settings-options-probe";
+    probe.style.position = "absolute";
+    probe.style.visibility = "hidden";
+    probe.style.pointerEvents = "none";
+    probe.style.width = "auto";
+    probe.style.whiteSpace = "nowrap";
+    probe.style.left = "-9999px";
+    probe.style.top = "0";
+
+    probe.innerHTML = this.getDesktopSettingsMarkup(group);
+    document.body.appendChild(probe);
+
+    const width = probe.offsetWidth;
+    probe.remove();
+
+    return width;
+  },
+
   setSettingsGroup(group) {
-    this.state.activeSettingsGroup = group;
+    const container = this.elements.desktopSettingsOptions;
 
     document.querySelectorAll("[data-settings-group]").forEach((button) => {
       button.classList.toggle(
@@ -341,8 +365,27 @@ const Carousel = {
       );
     });
 
-    this.renderDesktopSettingsOptions();
+    this.state.activeSettingsGroup = group;
     this.renderSettingsOptions(group);
+
+    if (!container) {
+      this.renderDesktopSettingsOptions();
+      return;
+    }
+
+    const currentWidth = container.offsetWidth;
+    const nextWidth = this.measureDesktopSettingsWidth(group);
+
+    container.style.width = `${currentWidth}px`;
+    container.style.transition = "width 0.25s ease, opacity 0.1s ease";
+
+    container.style.opacity = "0";
+
+    setTimeout(() => {
+      this.renderDesktopSettingsOptions();
+      container.style.width = `${nextWidth}px`;
+      container.style.opacity = "1";
+    }, 90);
   },
 
   bindEvents() {
