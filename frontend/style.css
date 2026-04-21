@@ -652,6 +652,17 @@ kbd {
     border-radius: 999px;
 }
 
+.item.is-typing::after {
+    content: "";
+    display: inline-block;
+    width: 0.1em;
+    height: 1em;
+    margin-left: 0.08em;
+    background: var(--accent-color);
+    vertical-align: -0.08em;
+    animation: caret-blink 0.9s step-end infinite;
+}
+
 #desktop-settings-options {
     overflow: hidden;
     white-space: nowrap;
@@ -751,15 +762,4 @@ kbd {
     #theme-toggle:hover i {
         opacity: 1;
     }
-}
-
-.item.is-typing::after {
-    content: "";
-    display: inline-block;
-    width: 0.1em;
-    height: 1em;
-    margin-left: 0.08em;
-    background: var(--accent-color);
-    vertical-align: -0.08em;
-    animation: caret-blink 0.9s step-end infinite;
 }
