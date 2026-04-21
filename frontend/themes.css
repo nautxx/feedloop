@@ -1,4 +1,14 @@
-/*-- fallback theme colors --*/
+@property --hue {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes rgb-cycle {
+    from {--hue: 0;}
+    to {--hue: 360;}
+}
+
 :root {
     --font-sans: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     --font-serif: "EB Garamond", serif;
@@ -11,11 +21,6 @@
     --accent-color: #C5B4E2;
     --text-color: #2f241c;
     --sub-color: #6b625a;
-
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
 }
 
 body.theme-aguila {
@@ -24,11 +29,6 @@ body.theme-aguila {
     --accent-color: #BA8C2D;
     --text-color: #262626;
     --sub-color: #BA8C2D;
-
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
 }
 
 body.theme-calm {
@@ -37,11 +37,6 @@ body.theme-calm {
     --accent-color: #B48126;
     --text-color: #382C21;
     --sub-color: #847E78;
-
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
 }
 
 body.theme-cheesecake {
@@ -51,10 +46,8 @@ body.theme-cheesecake {
     --text-color: #D91C81;
     --sub-color: #3A3335;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-frozen-llama {
@@ -64,10 +57,19 @@ body.theme-frozen-llama {
     --text-color: #B690FD;
     --sub-color: #FFFFFF;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
+}
+
+body.theme-laser {
+    --bg-color: #221B43;
+    --bg-alt-color: #1E173B;
+    --accent-color: #019EAE;
+    --text-color: #B82355;
+    --sub-color: #DBE7E8;
+
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-lavender {
@@ -77,10 +79,8 @@ body.theme-lavender {
     --text-color: #E4E3E8;
     --sub-color: #2F2A41;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-muted {
@@ -90,10 +90,8 @@ body.theme-muted {
     --text-color: #939EAD;
     --sub-color: #B1E3E3;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-nebula {
@@ -103,10 +101,8 @@ body.theme-nebula {
     --text-color: #1BB3B8;
     --sub-color: #828686;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-olivia {
@@ -116,10 +112,8 @@ body.theme-olivia {
     --text-color: #4D3E3E;
     --sub-color: #F2EFED;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-paper {
@@ -129,10 +123,8 @@ body.theme-paper {
     --text-color: #B2B2B2;
     --sub-color: #444444;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-pastel {
@@ -142,10 +134,8 @@ body.theme-pastel {
     --text-color: #B4E8FF;
     --sub-color: #6D5C6F;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 body.theme-quiet {
@@ -154,11 +144,20 @@ body.theme-quiet {
     --accent-color: #009DDD;
     --text-color: #EBEBF5;
     --sub-color: #A7A7AF;
+}
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+body.theme-rgb {
+    --hue: 0;
+    animation: rgb-cycle 8s linear infinite;
+    --bg-color: #111111;
+    --bg-alt-color: #1A1A1A;
+    --accent-color: hsl(var(--hue), 100%, 60%);
+    --text-color: #444444;
+    --sub-color: #EEEEEE;
+
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--accent-color);
+    --bottom-bar-hover-color: var(--accent-color);
 }
 
 body.theme-trackspec {
@@ -167,11 +166,6 @@ body.theme-trackspec {
     --accent-color: #EB0028;
     --text-color: #2E2925;
     --sub-color: #A3A9AC;
-
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
 }
 
 body.theme-trackspec-dark {
@@ -180,11 +174,6 @@ body.theme-trackspec-dark {
     --accent-color: #EB0028;
     --text-color: #FFFFFF;
     --sub-color: #A3A9AC;
-
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
 }
 
 body.theme-ube {
@@ -194,10 +183,8 @@ body.theme-ube {
     --text-color: #706C91;
     --sub-color: #130F1A;
 
-    --surface-color: var(--bg-color);
-    --surface-hover-color: var(--sub-color);
-    --surface-active-color: var(--sub-color);
-    --surface-text-color: var(--bg-color);
+    --hero-color: var(--sub-color);
+    --sub-alt-color: var(--text-color);
 }
 
 .theme-option[data-theme="aguila"] {
@@ -226,6 +213,13 @@ body.theme-ube {
     --swatch-accent-color: #6D44A5;
     --swatch-text-color: #B690FD;
     --swatch-sub-color: #FFFFFF;
+}
+
+.theme-option[data-theme="laser"] {
+    --swatch-bg-color: #221B43;
+    --swatch-accent-color: #019EAE;
+    --swatch-text-color: #B82355;
+    --swatch-sub-color: #DBE7E8;
 }
 
 .theme-option[data-theme="lavender"] {
@@ -275,6 +269,13 @@ body.theme-ube {
     --swatch-accent-color: #009DDD;
     --swatch-text-color: #EBEBF5;
     --swatch-sub-color: #A7A7AF;
+}
+
+.theme-option[data-theme="rgb"] {
+    --swatch-bg-color: #111111;
+    --swatch-accent-color: #FFFFFF;
+    --swatch-text-color: #444444;
+    --swatch-sub-color: #EEEEEE;
 }
 
 .theme-option[data-theme="trackspec"] {

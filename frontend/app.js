@@ -109,6 +109,9 @@ const Carousel = {
 
   init() {
     this.cacheElements();
+    Object.freeze(this.config.settingsGroups);
+    Object.freeze(this.config.settingsGroups.mode);
+    Object.freeze(this.config.settingsGroups.rate);
     this.applySavedTheme();
     this.applySavedSpeed();
     this.applySavedMode();
@@ -219,18 +222,25 @@ const Carousel = {
       return;
     }
 
+    if (!container.dataset.initialized) {
+      this.renderDesktopSettingsOptions();
+      container.style.width = "auto";
+      container.dataset.initialized = "true";
+      return;
+    }
+
     const currentWidth = container.offsetWidth;
     const nextWidth = this.measureDesktopSettingsWidth(group);
 
     container.style.width = `${currentWidth}px`;
     container.style.transition = "width 0.25s ease, opacity 0.1s ease";
-
     container.style.opacity = "0";
 
     setTimeout(() => {
       this.renderDesktopSettingsOptions();
       container.style.width = `${nextWidth}px`;
       container.style.opacity = "1";
+
     }, 90);
   },
 
@@ -321,9 +331,12 @@ const Carousel = {
     const container = this.elements.desktopSettingsOptions;
     if (!container) return;
 
-    container.innerHTML = this.getDesktopSettingsMarkup(
-      this.state.activeSettingsGroup,
-    );
+    const group = this.state.activeSettingsGroup;
+    const options = this.getSettingsOptions(group);
+
+    if (!options || options.length === 0) return;
+
+    container.innerHTML = this.getDesktopSettingsMarkup(group);
   },
 
   renderSettingsOptions(group) {
@@ -985,15 +998,13 @@ const Carousel = {
     if (!container) return;
 
     container.style.transition = "none";
-    container.style.width = "";
+    container.style.width = "auto"; // 🔥 reset fully
     container.style.opacity = "";
+
     this.renderDesktopSettingsOptions();
 
     requestAnimationFrame(() => {
-      const nextWidth = this.measureDesktopSettingsWidth(
-        this.state.activeSettingsGroup,
-      );
-      container.style.width = `${nextWidth}px`;
+      container.style.width = `${container.scrollWidth}px`;
       container.style.transition = "";
     });
   },
