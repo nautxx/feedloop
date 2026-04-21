@@ -105,6 +105,17 @@ h1 {
     padding: 24px 16px;
 }
 
+.item.is-typing::after {
+    content: "";
+    display: inline-block;
+    width: 0.1em;
+    height: 1em;
+    margin-left: 0.08em;
+    background: var(--accent-color);
+    vertical-align: -0.08em;
+    animation: caret-blink 0.9s step-end infinite;
+}
+
 .top-row {
     width: 100%;
     max-width: 1300px;
@@ -650,17 +661,6 @@ kbd {
     background: var(--bg-alt-color);
     margin: 6px 0;
     border-radius: 999px;
-}
-
-.item.is-typing::after {
-    content: "";
-    display: inline-block;
-    width: 0.1em;
-    height: 1em;
-    margin-left: 0.08em;
-    background: var(--accent-color);
-    vertical-align: -0.08em;
-    animation: caret-blink 0.9s step-end infinite;
 }
 
 #desktop-settings-options {
