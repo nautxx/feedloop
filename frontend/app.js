@@ -673,20 +673,30 @@ const Carousel = {
     try {
       const response = await fetch(this.config.itemsUrl);
 
+      // 👇 handle missing file (first run)
+      if (response.status === 404) {
+        this.renderMessage(
+          "No feed found. Copy feed.example.json to feed.json to get started.",
+        );
+        return;
+      }
+
       if (!response.ok) throw new Error();
 
       const data = await response.json();
       this.state.items = this.normalizeItems(data.items);
 
       if (!this.state.items.length) {
-        this.renderMessage(this.config.messages.empty);
+        this.renderMessage("Your feed is empty. Add items to feed.json.");
         return;
       }
 
       this.renderInitialItem();
       this.scheduleNextItem();
     } catch {
-      this.renderMessage(this.config.messages.error);
+      this.renderMessage(
+        "Could not load feed.json. Check that it exists and contains valid JSON.",
+      );
     }
   },
 
