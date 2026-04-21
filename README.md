@@ -1,75 +1,105 @@
-[![](https://raw.githubusercontent.com/nautxx/feedloop/main/frontend/static/images/feedloop_ghbanner.png)](https://barnachea.fyi/)
-<br />
+# Feedloop
 
 [![Fontawesome](https://img.shields.io/badge/fontawesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=white)](https://fontawesome.com/)
 [![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-# About
+## About
 
-Feedloop is a minimalistic, customizable content carousel designed to surface meaningful, memorable, and dynamic information over time.
+Feedloop is a minimal, customizable content carousel designed to surface meaningful, memorable, and dynamic information over time.
 
-Built with simplicity and flexibility in mind, it allows you to curate structured datasets—ranging from family history and personal anecdotes to timelines and milestones—and present them in a clean, distraction-free interface.
+It transforms structured data—such as family history, personal notes, quotes, and milestones—into a clean, evolving display.
 
-With support for theming, weighted randomness, and dynamic content generation (such as time-based updates), Feedloop transforms static information into a living, evolving experience.
+Built with simplicity and flexibility in mind, Feedloop focuses on readability, pacing, and long-form ambient viewing.
 
 ## Features
 
-- Dynamic content carousel with smooth fade and blur transitions
-- Weighted randomness to prioritize more important facts
-- Smart rotation logic that avoids recently shown facts
+- Dynamic content carousel with multiple display modes (instant, fade, pop, typing)
+- Weighted randomness to prioritize important items
+- Smart rotation logic to avoid recently shown content
 - Type balancing to prevent repetitive categories
 - Time-aware display duration based on reading speed and punctuation
-- Dynamic fact generation using templates (e.g. years since an event)
-- Customizable theming system with multiple visual styles
-- Persistent theme selection using local storage
-- Interactive theme selector modal with live preview swatches
-- Responsive layout with orientation-aware spacing
-- Fixed fact container to prevent layout shifting
-- Clean, minimal UI focused on readability and storytelling
-- Structured JSON dataset with support for types, tags, and priorities
+- Multiline support for quotes and longer content
+- Quote support with author attribution
+- Customizable theming system
+- Persistent settings (theme, mode, speed)
+- Responsive layout for desktop and mobile
+- Clean, distraction-free UI
 
 ## Tech Stack
 
-- nginx (alpine) via Docker
-- Static HTML, CSS, and JavaScript
+- nginx (alpine) via Docker  
+- Static HTML, CSS, and JavaScript  
 
 ## Running Locally
 
-Run:
+```bash
 docker compose up -d
+```
 
 Then open:
-http://localhost:8089
 
-## Editing Facts
+<http://localhost:8089>
 
-All facts are stored in:
-facts.json
+## Feed Data
 
-Each fact follows this structure:
+Feedloop uses a local `feed.json` file for content.
 
+This file is **ignored by git**, so you can safely store personal or private data.
+
+### Setup
+
+```bash
+cp feed.template.json feed.json
+```
+
+Then edit `feed.json`.
+
+## Data Structure
+
+```json
 {
-  "id": 1,
-  "text": "Example fact",
-  "type": "category",
-  "tags": ["tag1", "tag2"],
-  "active": true,
-  "priority": 2
+  "items": [
+    {
+      "id": "fact-001",
+      "text": "Example fact",
+      "type": "fact",
+      "active": true,
+      "priority": 1
+    },
+    {
+      "id": "quote-001",
+      "text": "This is a sample quote.",
+      "author": "Your Name",
+      "type": "quote",
+      "active": true,
+      "priority": 2
+    }
+  ]
 }
+```
 
-### Guidelines
+## Item Fields
 
-- Keep facts specific and meaningful
-- Avoid vague wording ("some", "many", etc.)
-- Ensure all `id` values are unique
-- Do not reuse IDs
-- Set `"active": false` to disable a fact without deleting it
+- `id` (string) — unique identifier  
+- `text` (string) — main content  
+- `type` (string) — e.g. `fact`, `quote`  
+- `author` (string, optional) — used for quotes  
+- `priority` (number, optional) — affects frequency  
+- `active` (boolean, optional) — disable without deleting  
+
+## Guidelines
+
+- Keep content concise and meaningful  
+- Avoid vague wording  
+- Ensure all `id` values are unique  
+- Use `priority` to control frequency  
+- Use quotes for personal notes or messages  
 
 ## Links
 
-- Live: <https://your-site.com>
-- Repo: <https://github.com/yourusername/feedloop>
+- Live: <https://barnachea.fyi>  
+- Repo: <https://github.com/nautxx/feedloop>
 
-# Support
+## Support
 
-If you wish to support further development, you can [donate](https://ko-fi.com/nautxx).
+If you wish to support development, you can donate: <https://ko-fi.com/nautxx>
