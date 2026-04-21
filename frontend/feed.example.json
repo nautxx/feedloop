@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "id": "fact-001",
+      "text": "Example fact goes here.",
+      "type": "fact"
+    },
+    {
+      "id": "quote-001",
+      "text": "This is a sample quote.",
+      "author": "Your Name",
+      "type": "quote"
+    }
+  ]
+}

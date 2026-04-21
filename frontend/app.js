@@ -240,7 +240,6 @@ const Carousel = {
       this.renderDesktopSettingsOptions();
       container.style.width = `${nextWidth}px`;
       container.style.opacity = "1";
-
     }, 90);
   },
 
@@ -267,7 +266,7 @@ const Carousel = {
     const item = this.getNextItem();
     if (!item) return;
 
-    this.elements.item.textContent = item.text;
+    this.elements.item.textContent = this.formatItemText(item);
     this.elements.item.style.opacity = "1";
 
     this.state.lastItemId = item.id;
@@ -289,7 +288,7 @@ const Carousel = {
 
     this.clearTypingTimer();
 
-    el.textContent = item.text;
+    el.textContent = this.formatItemText(item);
     el.style.opacity = "1";
     el.style.filter = "blur(0px)";
     el.style.transform = "scale(1)";
@@ -447,6 +446,8 @@ const Carousel = {
     const item = this.getNextItem();
     if (!item || !this.elements.item) return;
 
+    const displayText = this.formatItemText(item);
+
     // update history
     this.state.history = this.state.history.slice(
       0,
@@ -460,56 +461,51 @@ const Carousel = {
 
     this.clearTypingTimer();
 
-    // INSTANT mode
     if (this.state.mode === "instant") {
-      el.textContent = item.text;
+      el.textContent = displayText;
       el.style.opacity = "1";
       el.style.filter = "blur(0px)";
-    }
-
-    // FADE mode
-    else if (this.state.mode === "fade") {
+    } else if (this.state.mode === "fade") {
       el.style.transition = `opacity ${duration}ms ease, filter ${duration}ms ease`;
       el.style.opacity = "0";
       el.style.filter = "blur(1px)";
 
       setTimeout(() => {
-        el.textContent = item.text;
+        el.textContent = displayText;
         el.style.opacity = "1";
         el.style.filter = "blur(0px)";
       }, duration);
-    }
+    } else if (this.state.mode === "typing") {
+      this.typeItem(displayText);
+    } else if (this.state.mode === "pop") {
+      const popDuration = 120;
 
-    // TYPING mode
-    else if (this.state.mode === "typing") {
-      this.typeItem(item.text);
-    }
-
-    // POP mode
-    else if (this.state.mode === "pop") {
-      const duration = 120;
-
-      el.style.transition = `transform ${duration}ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity ${duration}ms ease-out`;
+      el.style.transition = `transform ${popDuration}ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity ${popDuration}ms ease-out`;
       el.style.transform = "scale(0.75)";
       el.style.opacity = "0";
 
       setTimeout(() => {
-        el.textContent = item.text;
-
+        el.textContent = displayText;
         el.style.transform = "scale(1.16)";
         el.style.opacity = "1";
 
         requestAnimationFrame(() => {
-          el.style.transition = `transform ${duration}ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity ${duration}ms ease-out`;
+          el.style.transition = `transform ${popDuration}ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity ${popDuration}ms ease-out`;
           el.style.transform = "scale(1)";
         });
-      }, duration);
+      }, popDuration);
     }
 
-    // update state ONCE
     this.state.lastItemId = item.id;
     this.rememberItem(item.id);
     this.rememberType(item.type);
+  },
+
+  formatItemText(item) {
+    if (item.type === "quote") {
+      return `“${item.text}”\n— ${item.author}`;
+    }
+    return item.text;
   },
 
   getItemWeight(item) {

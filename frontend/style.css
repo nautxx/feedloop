@@ -95,6 +95,7 @@ h1 {
     opacity: 0;
     transition: opacity 2s ease;
     filter: blur(0);
+    white-space: pre-line;
 }
 
 .item-wrap {
@@ -114,6 +115,20 @@ h1 {
     background: var(--accent-color);
     vertical-align: -0.08em;
     animation: caret-blink 0.9s step-end infinite;
+}
+
+.quote-text {
+    display: block;
+    font-style: italic;
+}
+
+.quote-author {
+    display: block;
+    margin-top: 0.6em;
+    text-align: right;
+    padding-right: 0.2em;
+    font-size: 0.9em;
+    color: var(--sub-color);
 }
 
 .top-row {
@@ -219,6 +234,9 @@ h1 {
 
 .bottom-bar button,
 .bottom-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
     appearance: none;
     background: none;
     border: 0;
@@ -397,7 +415,6 @@ h1 {
 #theme-toggle {
     display: flex;
     align-items: center;
-    gap: 6px;
 }
 
 #theme-toggle i {
