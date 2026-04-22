@@ -184,7 +184,16 @@ const Carousel = {
 
       if (hint) {
         clearTimeout(this._focusHintTimer);
+
+        // temporarily disable transition
+        hint.style.transition = "none";
         hint.classList.remove("is-visible");
+
+        // force reflow so browser applies instantly
+        hint.offsetHeight;
+
+        // restore transition
+        hint.style.transition = "";
       }
     };
 
