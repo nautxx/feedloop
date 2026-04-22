@@ -160,6 +160,14 @@ body.theme-rgb {
     --bottom-bar-hover-color: var(--accent-color);
 }
 
+body.theme-sagada-coffee-liqueur {
+    --bg-color: #F8B408;
+    --bg-alt-color: #F8B408;
+    --accent-color: #D0D0D0;
+    --text-color: #1C222A;
+    --sub-color: #FFFFFF;
+}
+
 body.theme-sagada-dry-gin {
     --bg-color: #30DDE4;
     --bg-alt-color: #23cad0;
@@ -284,6 +292,13 @@ body.theme-ube {
     --swatch-accent-color: #FFFFFF;
     --swatch-text-color: #444444;
     --swatch-sub-color: #EEEEEE;
+}
+
+.theme-option[data-theme="sagada-coffee-liqueur"] {
+    --swatch-bg-color: #F8B408;
+    --swatch-accent-color: #D0D0D0;
+    --swatch-text-color: #1C222A;
+    --swatch-sub-color: #FFFFFF;
 }
 
 .theme-option[data-theme="sagada-dry-gin"] {
