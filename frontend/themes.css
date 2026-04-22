@@ -10,9 +10,9 @@
 }
 
 @keyframes bg-cycle {
-    33%   { --bg-color: #30DDE4; --bg-alt-color: #23cad0; }
-    66%  { --bg-color: #EDEBE4; --bg-alt-color: #e1dfd8; }
-    100%  { --bg-color: #F2CA05; --bg-alt-color: #F8B408; }
+    0%   { --bg-color: #30DDE4; --bg-alt-color: #23cad0;}
+    33%  { --bg-color: #EDEBE4; --bg-alt-color: #e1dfd8;} /* fix theme bar */
+    66%  { --bg-color: #F2CA05; --bg-alt-color: #F8B408;}
 }
 
 :root {
@@ -167,12 +167,18 @@ body.theme-rgb {
 }
 
 body.theme-sagada-cellar-door {
-    animation: bg-cycle 30s linear infinite;
+    animation: bg-cycle 60s ease-in-out infinite;
     --bg-color: #30DDE4;
     --bg-alt-color: #23cad0;
-    --accent-color: #D0D0D0;
+    --accent-color: #FFFFFF;
     --text-color: #1C222A;
-    --sub-color: #FFFFFF;
+    --sub-color: #989796;
+
+    --theme-color: var(--text-color);
+    --theme-bg-hover-color: var(--text-color);
+    --theme-hover-color: var(--sub-color);
+    --theme-active-bg-color: var(--text-color);
+    --theme-active-color: var(--sub-color);
 }
 
 body.theme-trackspec {

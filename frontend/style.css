@@ -229,7 +229,7 @@ body.focus-mode {
     align-items: center;
     padding: 0;
     border-radius: 0.6rem;
-    background: var(--bg-alt-color);
+    background: var(--control-bg-color, var(--bg-alt-color));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -253,13 +253,8 @@ body.focus-mode {
         transform 0.1s ease;
 }
 
-.control-option:hover {
-    color: var(--sub-color);
-    opacity: 1;
-}
-
 .control-option.is-active {
-    color: color-mix(in srgb, var(--accent-color) 100%, transparent);
+    color: var(--control-active-color, var(--accent-color));
     opacity: 1;
 }
 
@@ -507,7 +502,7 @@ body.focus-mode {
     padding: 0;
     border-radius: 12px;
     background: var(--bg-color);
-    color: var(--sub-color);
+    color: var(--theme-color, var(--sub-color));
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 0 0 0.2em var(--bg-alt-color);
@@ -560,8 +555,8 @@ body.focus-mode {
 }
 
 .theme-option.is-active {
-    background: var(--sub-color);
-    color: var(--bg-color);
+    background: var(--theme-active-bg-color,var(--sub-color));
+    color: var(--theme-active-color, var(--bg-color));
     opacity: 1;
 }
 
@@ -837,12 +832,12 @@ kbd {
 
     .bottom-bar button:hover,
     .bottom-bar a:hover {
-        color: var(--bottom-bar-hover-color, var(--sub-color));
+        color: var(--sub-color);
     }
 
     .theme-option:hover {
-        background: var(--sub-color);
-        color: var(--bg-color);
+        background: var(--theme-bg-hover-color, var(--sub-color));
+        color: var(--theme-hover-color, var(--bg-color));
         opacity: 1;
     }
 
