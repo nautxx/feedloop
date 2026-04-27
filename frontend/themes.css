@@ -9,6 +9,13 @@
     to {--hue: 360;}
 }
 
+@keyframes bg-cycle {
+    0%   { --bg-color: #30DDE4; --bg-alt-color: #23cad0; --control-hover-color: #989796;}
+    25%  { --bg-color: #EDEBE4; --bg-alt-color: #e1dfd8; --control-hover-color: #E0211F;}
+    50%  { --bg-color: #F9E700; --bg-alt-color: #F2CC03; --control-hover-color: #989796;}
+    75%  { --bg-color: #FAB106; --bg-alt-color: #F19303; --control-hover-color: #989796;}
+}
+
 :root {
     --font-sans: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     --font-serif: "EB Garamond", serif;
@@ -160,6 +167,21 @@ body.theme-rgb {
     --bottom-bar-hover-color: var(--accent-color);
 }
 
+body.theme-sagada-cellar-door {
+    animation: bg-cycle 180s ease-in-out infinite;
+    --bg-color: #30DDE4;
+    --bg-alt-color: #23cad0;
+    --accent-color: #FFFFFF;
+    --text-color: #1C222A;
+    --sub-color: #989796;
+
+    --theme-color: var(--text-color);
+    --theme-bg-hover-color: var(--text-color);
+    --theme-hover-color: var(--sub-color);
+    --theme-active-bg-color: var(--text-color);
+    --theme-active-color: var(--sub-color);
+}
+
 body.theme-trackspec {
     --bg-color: #FFFFFF;
     --bg-alt-color: #fafafa;
@@ -276,6 +298,13 @@ body.theme-ube {
     --swatch-accent-color: #FFFFFF;
     --swatch-text-color: #444444;
     --swatch-sub-color: #EEEEEE;
+}
+
+.theme-option[data-theme="sagada-cellar-door"] {
+    --swatch-bg-color: #30DDE4;
+    --swatch-accent-color: #FFFFFF;
+    --swatch-text-color: #1C222A;
+    --swatch-sub-color: #989796;
 }
 
 .theme-option[data-theme="trackspec"] {

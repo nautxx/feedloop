@@ -45,6 +45,7 @@
  *   "olivia" |
  *   "paper" |
  *   "pastel" |
+ *   "sagada-cellar-door" |
  *   "trackspec" |
  *   "trackspec-dark" |
  *   "quiet" |
@@ -119,6 +120,7 @@ const Carousel = {
     this.bindEvents();
     this.loadItems();
     this.loadNotifications();
+    this.initFocusMode();
   },
 
   cacheElements() {
@@ -146,6 +148,98 @@ const Carousel = {
   applySavedMode() {
     const saved = localStorage.getItem("Carousel-mode") || "fade";
     this.setMode(saved);
+  },
+
+  initFocusMode() {
+    const btn = document.getElementById("focus-toggle");
+    const hint = document.getElementById("focus-hint");
+    if (!btn) return;
+
+    const enterFocusMode = () => {
+      document.body.classList.add("focus-mode");
+      localStorage.setItem("focusMode", "true");
+      this.updateFocusButton(btn, true);
+
+      if (hint) {
+        const isTouch =
+          "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+        hint.innerHTML = isTouch
+          ? "tap <kbd>anywhere</kbd> to exit"
+          : "<kbd>esc</kbd> to exit";
+
+        clearTimeout(this._focusHintTimer);
+
+        hint.classList.add("is-visible");
+
+        this._focusHintTimer = setTimeout(() => {
+          hint.classList.remove("is-visible");
+        }, 2500);
+      }
+    };
+
+    const exitFocusMode = () => {
+      document.body.classList.remove("focus-mode");
+      localStorage.setItem("focusMode", "false");
+      this.updateFocusButton(btn, false);
+
+      if (hint) {
+        clearTimeout(this._focusHintTimer);
+
+        // temporarily disable transition
+        hint.style.transition = "none";
+        hint.classList.remove("is-visible");
+
+        // force reflow so browser applies instantly
+        hint.offsetHeight;
+
+        // restore transition
+        hint.style.transition = "";
+      }
+    };
+
+    const toggleFocusMode = () => {
+      if (document.body.classList.contains("focus-mode")) {
+        exitFocusMode();
+      } else {
+        enterFocusMode();
+      }
+    };
+
+    // Load saved state
+    const saved = localStorage.getItem("focusMode") === "true";
+    if (saved) {
+      enterFocusMode();
+    } else {
+      this.updateFocusButton(btn, false);
+      if (hint) hint.classList.remove("is-visible");
+    }
+
+    // Click handler
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleFocusMode();
+    });
+
+    // ESC to exit
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.body.classList.contains("focus-mode")) {
+        exitFocusMode();
+      }
+    });
+
+    // Tap / click anywhere to exit
+    document.addEventListener("click", (e) => {
+      if (!document.body.classList.contains("focus-mode")) return;
+      if (e.target.closest("#focus-toggle")) return;
+      exitFocusMode();
+    });
+  },
+
+  updateFocusButton(btn, isActive) {
+    btn.innerHTML = isActive
+      ? '<i class="fa-solid fa-compress"></i> exit'
+      : '<i class="fa-solid fa-expand"></i> focus';
   },
 
   setSpeed(speed) {
@@ -233,13 +327,11 @@ const Carousel = {
     const nextWidth = this.measureDesktopSettingsWidth(group);
 
     container.style.width = `${currentWidth}px`;
-    container.style.transition = "width 0.25s ease, opacity 0.1s ease";
-    container.style.opacity = "0";
+    container.style.transition = "width 0.25s ease";
 
     setTimeout(() => {
       this.renderDesktopSettingsOptions();
       container.style.width = `${nextWidth}px`;
-      container.style.opacity = "1";
     }, 90);
   },
 
@@ -603,7 +695,7 @@ const Carousel = {
 
     const cadenceFactors =
       this.state.mode === "typing"
-        ? [0.9, 1, 1.15] // much tighter range
+        ? [0.9, 1, 1.15]
         : [0.75, 1, 1.35];
     const randomFactor =
       cadenceFactors[Math.floor(Math.random() * cadenceFactors.length)];
@@ -673,20 +765,30 @@ const Carousel = {
     try {
       const response = await fetch(this.config.itemsUrl);
 
+      // handle missing file (first run)
+      if (response.status === 404) {
+        this.renderMessage(
+          "No feed found. Copy feed.example.json to feed.json to get started.",
+        );
+        return;
+      }
+
       if (!response.ok) throw new Error();
 
       const data = await response.json();
       this.state.items = this.normalizeItems(data.items);
 
       if (!this.state.items.length) {
-        this.renderMessage(this.config.messages.empty);
+        this.renderMessage("Your feed is empty. Add items to feed.json.");
         return;
       }
 
       this.renderInitialItem();
       this.scheduleNextItem();
     } catch {
-      this.renderMessage(this.config.messages.error);
+      this.renderMessage(
+        "Could not load feed.json. Check that it exists and contains valid JSON.",
+      );
     }
   },
 
@@ -772,7 +874,6 @@ const Carousel = {
 
     const panel = modal.querySelector(".settings-modal-panel");
 
-    // faster exit
     panel.style.transition = "transform 0.1s ease, opacity 0.1s ease";
     panel.style.transform = "scale(0.9)";
     panel.style.opacity = "0";
