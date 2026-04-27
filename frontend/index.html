@@ -83,24 +83,32 @@
         </div>
 
         <div id="focus-hint" class="focus-hint"></div>
-        
-        <div class="bottom-bar" aria-label="Site controls">
-            <a href="https://github.com/nautxx/feedloop" target="_blank" rel="noopener">
-                <i class="fa-solid fa-code"></i> github
-            </a>
-            <span class="divider">·</span>
-            <button type="button" id="theme-toggle">
-                <i class="fa-solid fa-palette"></i>
-                <span class="theme-label">theme</span>
-            </button>
-            <button type="button" id="focus-toggle">
-                <i class="fa-solid fa-expand"></i>
-                <span class="theme-label">focus</span>
-            </button>
-            <button type="button" id="version-toggle">
-                <i class="fa-solid fa-code-branch"></i>
-                <span class="theme-label">v0.1.0-alpha</span>
-            </button>
+        <div class="bottom-stack">
+            <div class="keymap-hint">
+                <span><kbd>f</kbd> - focus</span>
+                <span><kbd>t</kbd> - theme</span>
+                <span><kbd>←</kbd> <kbd>→</kbd> - navigate</span>
+                <span><kbd>esc</kbd> - exit</span>
+            </div>
+            
+            <div class="bottom-bar" aria-label="Site controls">
+                <a href="https://github.com/nautxx/feedloop" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-code"></i> github
+                </a>
+                <span class="divider">·</span>
+                <button type="button" id="theme-toggle">
+                    <i class="fa-solid fa-palette"></i>
+                    <span class="theme-label">theme</span>
+                </button>
+                <button type="button" id="focus-toggle">
+                    <i class="fa-solid fa-expand"></i>
+                    <span class="theme-label">focus</span>
+                </button>
+                <button type="button" id="version-toggle">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <span class="theme-label">v0.1.0-alpha</span>
+                </button>
+            </div>
         </div>
     </main>
 
