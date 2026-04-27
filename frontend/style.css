@@ -729,10 +729,18 @@ body.focus-mode {
 
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 4px;
     flex-wrap: wrap;
+    flex-direction: column;
 
     transition: opacity 0.2s ease;
+}
+
+.keymap-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .focus-hint {
