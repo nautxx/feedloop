@@ -763,6 +763,41 @@ kbd {
         opacity 0.1s ease;
 }
 
+/* hover devices */
+@media (hover: hover) and (pointer: fine) {
+
+    .control-option:hover,
+    .top-row-button:hover {
+        color: var(--control-hover-color, var(--sub-color));
+        opacity: 1;
+    }
+
+    .bottom-bar button:hover,
+    .bottom-bar a:hover {
+        color: var(--sub-color);
+    }
+
+    .theme-option:hover {
+        background: var(--theme-bg-hover-color, var(--sub-color));
+        color: var(--theme-hover-color, var(--bg-color));
+        opacity: 1;
+    }
+
+    .settings-option:hover:not(.is-active) {
+        background: var(--accent-color);
+        color: var(--bg-color);
+    }
+
+    #settings-toggle:hover {
+        background: var(--sub-color);
+        color: var(--bg-color);
+    }
+
+    #theme-toggle:hover i {
+        opacity: 1;
+    }
+}
+
 /* mobile */
 @media (max-width: 610px) {
     .desktop-controls {
@@ -818,40 +853,5 @@ kbd {
     .theme-modal-panel {
         scrollbar-width: 3px;
         scrollbar-color: var(--text-color);
-    }
-}
-
-/* hover devices */
-@media (hover: hover) and (pointer: fine) {
-
-    .control-option:hover,
-    .top-row-button:hover {
-        color: var(--control-hover-color,var(--sub-color));
-        opacity: 1;
-    }
-
-    .bottom-bar button:hover,
-    .bottom-bar a:hover {
-        color: var(--sub-color);
-    }
-
-    .theme-option:hover {
-        background: var(--theme-bg-hover-color, var(--sub-color));
-        color: var(--theme-hover-color, var(--bg-color));
-        opacity: 1;
-    }
-
-    .settings-option:hover:not(.is-active) {
-        background: var(--accent-color);
-        color: var(--bg-color);
-    }
-
-    #settings-toggle:hover {
-        background: var(--sub-color);
-        color: var(--bg-color);
-    }
-
-    #theme-toggle:hover i {
-        opacity: 1;
     }
 }
