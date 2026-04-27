@@ -327,13 +327,11 @@ const Carousel = {
     const nextWidth = this.measureDesktopSettingsWidth(group);
 
     container.style.width = `${currentWidth}px`;
-    container.style.transition = "width 0.25s ease, opacity 0.1s ease";
-    container.style.opacity = "0";
+    container.style.transition = "width 0.25s ease";
 
     setTimeout(() => {
       this.renderDesktopSettingsOptions();
       container.style.width = `${nextWidth}px`;
-      container.style.opacity = "1";
     }, 90);
   },
 
